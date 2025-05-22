@@ -1,0 +1,51 @@
+Usando la base de datos de HR (Recursos Humanos) realice las siguientes transacciones.
+
+
+
+1.Crear una tabla de respaldo de la tabla de employees y póngale de nombre copia_employees
+
+ create table copia_employees as select * from employees
+
+2. En la tabla backup elimine el empleado 110. Muestre el script de eliminación y el select para comprobar que dicho empleado no existe.
+ 
+1) select * from copia_employees where employee_id=110
+2)  DELETE FROM copia_employees WHERE employee_id=110
+
+
+3.Inserte en la tabla de employees lo siguiente:
+A. Muestre el insert: Ana Perez, ingreso a trabajar el 01-feb-2021, con el puesto de Programador, y su jefe será el encargado del departamento de tecnología, por lo tanto, Ana también estará en ese departamento. Ana devengará inicialmente un salario de 10,000 y tendrá comisión de un 0.20%
+
+INSERT INTO copia_employees (employee_id, first_name, last_name, email, hire_date, job_id, department_id, salary, commission_pct)
+VALUES ('207','Ana', 'Perez', 'APEREZ', TO_DATE('01-feb-2021', 'dd-mon-yyyy'), 'DEV', '205', 10000, 0.20)
+
+  b. Muestre el select con los cambios
+ SELECT * FROM copia_employees WHERE first_name = 'Ana'
+
+
+4. Actualice el nombre del empleado 109 y póngale sus datos (El dato suyo como estudiante)
+
+
+         a. Muestre el update y el select del antes y despues de los cambios.
+ 
+Update
+UPDATE copia_employees
+SET first_name = 'Sebastian',last_name = 'Espinal', email = '202010249@itla.edu.do'
+WHERE employee_id = 109;
+ 
+Select
+select* from copia_employees
+where first_name = 'Sebastian'
+ 
+
+
+
+
+5.       Use merge para actualizar la tabla backup creada con las modificaciones realizadas en el punto 2, 3 y 
+
+         a. muestre un select para comprobar cada cambio. 
+
+
+
+6.       Realice rollback a todas las transacciones realizadas.
+ROLLBACK
+ 
